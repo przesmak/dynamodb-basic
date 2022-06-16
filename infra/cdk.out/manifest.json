@@ -23,7 +23,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/cc9547301d1b941c6c365c047dde56ead2225f625f44d106c63f5d525bc3aea1.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/33afc930c8c58b7390c12694af9aa32c2d38b04c7d02790f8a25f259b182ab84.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -51,6 +51,20 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "ConfigTable5CD72349"
+          }
+        ],
+        "/InfraStack/MPMJobs": [
+          {
+            "type": "aws:cdk:hasPhysicalName",
+            "data": {
+              "Ref": "MPMJobs08B9EAFD"
+            }
+          }
+        ],
+        "/InfraStack/MPMJobs/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MPMJobs08B9EAFD"
           }
         ],
         "/InfraStack/CDKMetadata/Default": [

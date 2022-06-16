@@ -28,21 +28,21 @@
                   "aws:cdk:cloudformation:props": {
                     "keySchema": [
                       {
-                        "attributeName": "id",
+                        "attributeName": "meterSize",
                         "keyType": "HASH"
                       },
                       {
-                        "attributeName": "user_id",
+                        "attributeName": "projectName",
                         "keyType": "RANGE"
                       }
                     ],
                     "attributeDefinitions": [
                       {
-                        "attributeName": "id",
-                        "attributeType": "N"
+                        "attributeName": "meterSize",
+                        "attributeType": "S"
                       },
                       {
-                        "attributeName": "user_id",
+                        "attributeName": "projectName",
                         "attributeType": "S"
                       }
                     ],
@@ -50,7 +50,7 @@
                       "readCapacityUnits": 5,
                       "writeCapacityUnits": 5
                     },
-                    "tableName": "config-table"
+                    "tableName": "MeterConfigs"
                   }
                 },
                 "constructInfo": {
@@ -61,6 +61,62 @@
               "ScalingRole": {
                 "id": "ScalingRole",
                 "path": "InfraStack/ConfigTable/ScalingRole",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.Resource",
+                  "version": "2.15.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_dynamodb.Table",
+              "version": "2.15.0"
+            }
+          },
+          "MPMJobs": {
+            "id": "MPMJobs",
+            "path": "InfraStack/MPMJobs",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "InfraStack/MPMJobs/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::DynamoDB::Table",
+                  "aws:cdk:cloudformation:props": {
+                    "keySchema": [
+                      {
+                        "attributeName": "userUuid",
+                        "keyType": "HASH"
+                      },
+                      {
+                        "attributeName": "timestamp",
+                        "keyType": "RANGE"
+                      }
+                    ],
+                    "attributeDefinitions": [
+                      {
+                        "attributeName": "userUuid",
+                        "attributeType": "S"
+                      },
+                      {
+                        "attributeName": "timestamp",
+                        "attributeType": "S"
+                      }
+                    ],
+                    "provisionedThroughput": {
+                      "readCapacityUnits": 5,
+                      "writeCapacityUnits": 5
+                    },
+                    "tableName": "MPMJobs"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_dynamodb.CfnTable",
+                  "version": "2.15.0"
+                }
+              },
+              "ScalingRole": {
+                "id": "ScalingRole",
+                "path": "InfraStack/MPMJobs/ScalingRole",
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.Resource",
                   "version": "2.15.0"

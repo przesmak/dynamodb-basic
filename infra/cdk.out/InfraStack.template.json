@@ -5,21 +5,21 @@
       "Properties": {
         "KeySchema": [
           {
-            "AttributeName": "id",
+            "AttributeName": "meterSize",
             "KeyType": "HASH"
           },
           {
-            "AttributeName": "user_id",
+            "AttributeName": "projectName",
             "KeyType": "RANGE"
           }
         ],
         "AttributeDefinitions": [
           {
-            "AttributeName": "id",
-            "AttributeType": "N"
+            "AttributeName": "meterSize",
+            "AttributeType": "S"
           },
           {
-            "AttributeName": "user_id",
+            "AttributeName": "projectName",
             "AttributeType": "S"
           }
         ],
@@ -27,12 +27,47 @@
           "ReadCapacityUnits": 5,
           "WriteCapacityUnits": 5
         },
-        "TableName": "config-table"
+        "TableName": "MeterConfigs"
       },
       "UpdateReplacePolicy": "Retain",
       "DeletionPolicy": "Retain",
       "Metadata": {
         "aws:cdk:path": "InfraStack/ConfigTable/Resource"
+      }
+    },
+    "MPMJobs08B9EAFD": {
+      "Type": "AWS::DynamoDB::Table",
+      "Properties": {
+        "KeySchema": [
+          {
+            "AttributeName": "userUuid",
+            "KeyType": "HASH"
+          },
+          {
+            "AttributeName": "timestamp",
+            "KeyType": "RANGE"
+          }
+        ],
+        "AttributeDefinitions": [
+          {
+            "AttributeName": "userUuid",
+            "AttributeType": "S"
+          },
+          {
+            "AttributeName": "timestamp",
+            "AttributeType": "S"
+          }
+        ],
+        "ProvisionedThroughput": {
+          "ReadCapacityUnits": 5,
+          "WriteCapacityUnits": 5
+        },
+        "TableName": "MPMJobs"
+      },
+      "UpdateReplacePolicy": "Retain",
+      "DeletionPolicy": "Retain",
+      "Metadata": {
+        "aws:cdk:path": "InfraStack/MPMJobs/Resource"
       }
     },
     "CDKMetadata": {
